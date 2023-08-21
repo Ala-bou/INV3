@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".authentification.LoginActivity">
+
+
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:id="@+id/rel_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/back"
+            />
+
+
+
+    </RelativeLayout>
+
+
+<ScrollView
+    android:layout_above="@+id/lin_action"
+    android:layout_below="@+id/rel_title"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+         android:layout_marginLeft="20dp"
+         android:layout_marginRight="20dp"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/login"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/bold"
+            android:gravity="center|left"
+            android:text="Connectez-vous"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:padding="10dp"
+
+            />
+
+
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+
+            android:fontFamily="@font/regular"
+            android:gravity="center|left"
+            android:text="“ Dans les détails de l'inventaire \nse cachent les clés de la prospérité “"
+            android:textColor="@color/gris_claire"
+            android:textSize="15dp"
+
+            />
+
+
+
+        <EditText
+            android:id="@+id/edit_user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/rounded_border"
+            android:fontFamily="@font/arial"
+            android:hint="Utilisateur *"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:padding="15dp"
+            android:textColor="@color/gris_claire"
+            android:textColorHint="@color/gris_medium"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/edit_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_border"
+            android:fontFamily="@font/arial"
+            android:hint="Mot de passe *"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:padding="15dp"
+            android:textColor="@color/gris_claire"
+            android:textColorHint="@color/gris_medium"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+
+</ScrollView>
+
+
+    <LinearLayout
+        android:id="@+id/lin_action"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        >
+
+        <TextView
+            android:id="@+id/txt_valider"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/effet_white"
+            android:fontFamily="@font/bold"
+            android:gravity="center"
+            android:text="S'authentifier"
+            android:textColor="@color/background"
+            android:textSize="15dp"
+            android:textStyle="bold"
+
+            />
+
+
+
+    </LinearLayout>
+</RelativeLayout>

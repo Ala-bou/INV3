@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+ >
+
+
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:id="@+id/rel_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/back"
+            />
+
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/rel_title"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/bold"
+            android:gravity="center|left"
+            android:text="Bonjour Ala"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:padding="10dp"
+
+            />
+
+
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+
+            android:fontFamily="@font/regular"
+            android:gravity="center|left"
+            android:text="“ Dans les détails de l'inventaire \nse cachent les clés de la prospérité “"
+            android:textColor="@color/gris_claire"
+            android:textSize="15dp"
+
+            />
+
+
+
+        <GridView
+            android:id="@+id/list_inventaire"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:id="@+id/rel_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/txt_reset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:drawableLeft="@drawable/refresh"
+                android:fontFamily="@font/regular"
+                android:text="  Réssayer"
+                android:textSize="20dp" />
+        </RelativeLayout>
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <include layout="@layout/placeholde" />
+            </LinearLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
+    </LinearLayout>
+
+
+
+</RelativeLayout>

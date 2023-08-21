@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".authentification.LoginActivity">
+
+
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:id="@+id/rel_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/back"
+            />
+
+
+
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:layout_above="@+id/lin_action"
+        android:layout_below="@+id/rel_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/bold"
+                android:gravity="center|left"
+                android:text="Paramètrages"
+                android:textColor="@color/white"
+                android:textSize="25dp"
+                android:padding="10dp"
+
+                />
+
+
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:padding="10dp"
+
+                android:fontFamily="@font/regular"
+                android:gravity="center|left"
+                android:text="“ Gérez efficacement,\nsuivez simplement.  “"
+                android:textColor="@color/gris_claire"
+                android:textSize="15dp"
+
+                />
+
+
+
+            <EditText
+                android:id="@+id/edit_ip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/rounded_border"
+                android:fontFamily="@font/arial"
+                android:hint="Adresse du serveur *"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:padding="20dp"
+                android:textColor="@color/gris_claire"
+                android:textColorHint="@color/gris_medium"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/edit_port"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_border"
+                android:fontFamily="@font/arial"
+                android:hint="Port de communication *"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:layout_marginTop="10dp"
+                android:padding="20dp"
+                android:textColor="@color/gris_claire"
+                android:textColorHint="@color/gris_medium"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                 android:layout_weight="1"
+                android:background="@drawable/rounded_border"
+                android:layout_marginTop="10dp"
+                android:padding="12dp"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <RadioGroup
+
+                    android:id="@+id/radioGroup_nbr_scan"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radio_gs1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:textColor="@color/white"
+                        android:checked="true"
+                        android:text="QrCode GS1" />
+
+                    <RadioButton
+                        android:id="@+id/radio_barcode"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/white"
+                        android:layout_weight="1"
+                        android:checked="false"
+                        android:text="Code à barre/ QR" />
+                </RadioGroup>
+            </LinearLayout>
+            <LinearLayout
+                android:background="@drawable/rounded_border"
+                android:layout_marginTop="10dp"
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                 android:layout_weight="1"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <Switch
+                    android:id="@+id/qte"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="1"
+                     android:checked="false"
+                    android:gravity="center|left"
+                    android:text="Confirmation du quantité 1"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@drawable/rounded_border"
+                android:layout_marginTop="10dp"
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                 android:layout_weight="1"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <Switch
+                    android:id="@+id/douchette"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center|left"
+                    android:text="Avec douchette ?"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white" />
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:padding="20dp"
+                android:id="@+id/init"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/effet_orange"
+                android:fontFamily="@font/bold"
+                android:gravity="center"
+                android:text="Initialisation"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                android:textStyle="bold"
+
+                />
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+    <LinearLayout
+        android:id="@+id/lin_action"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        >
+
+        <TextView
+            android:id="@+id/txt_valider"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/effet_white"
+            android:fontFamily="@font/bold"
+            android:gravity="center"
+            android:text="Valider"
+            android:textColor="@color/background"
+            android:textSize="15dp"
+            android:textStyle="bold"
+
+            />
+
+
+
+    </LinearLayout>
+</RelativeLayout>
