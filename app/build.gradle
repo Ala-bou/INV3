@@ -58,6 +58,8 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.9'
     implementation 'com.android.volley:volley:1.2.1'
     implementation 'com.github.NaimishTrivedi:FBToast:1.0'
+    implementation 'com.ibuildapp:TwoWayGridView:1.0.0'
+    implementation 'com.yarolegovich:sliding-root-nav:1.1.1'
 
 
     implementation 'com.daimajia.androidanimations:library:2.4@aar'

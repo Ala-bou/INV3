@@ -21,6 +21,7 @@ import com.scsi.inventaire3.R;
 import com.scsi.inventaire3.authentification.LoginActivity;
 import com.scsi.inventaire3.bdd.entity.USERS;
 import com.scsi.inventaire3.bdd.singleton.AppDatabase;
+import com.scsi.inventaire3.inventaire.LoadInventaireActivity;
 
 import java.io.File;
 
@@ -29,7 +30,7 @@ import static com.scsi.inventaire3.divers.Utils.GET_SHARED_USER_ID;
 import static com.scsi.inventaire3.divers.Utils.checkAndRequestPermissions;
 
 public class AcceuilActivity extends AppCompatActivity {
-     @BindView(R.id.txt_indication)
+    @BindView(R.id.txt_indication)
     TextView txt_indication;
     @BindView(R.id.txt_valider)
     TextView txt_valider;
@@ -37,6 +38,8 @@ public class AcceuilActivity extends AppCompatActivity {
     TextView txt_params;
     @BindView(R.id.txt_insert_user)
     TextView txt_insert_user;
+    @BindView(R.id.txt_delete_users)
+    TextView txt_delete_users;
 
     AppDatabase db;
 
@@ -53,48 +56,9 @@ public class AcceuilActivity extends AppCompatActivity {
         this.db = AppDatabase.getAppDatabase(this);
 
 
-        txt_insert_user.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                USERS users=new USERS();
-                users.setUSR_LOGIN("1");
-                users.setUSR_PWD("1");
-                db.USERSDao().insertUSERS(users);
-                finish();
-            }
-        });
-
-        txt_valider.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                if (Build.VERSION.SDK_INT >= 25) {
-                    checkPermissions();
-                } else {
-                    init();
-                }
-
-
-            }
-        });
-
-        txt_params.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                startActivity(new Intent(AcceuilActivity.this, ParametrageActivity.class));
 
 
 
-            }
-        });
-
-
-        YoYo.with(Techniques.FadeIn)
-                .duration(1500)
-                .repeat(500)
-                .playOn(findViewById(R.id.txt_indication));
     }
 
 
@@ -235,14 +199,12 @@ public class AcceuilActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     // androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, android.app.Activity
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
     }
-
 
 
     public void CHECK_ALL() {
@@ -278,8 +240,7 @@ public class AcceuilActivity extends AppCompatActivity {
             try {
                 File file = new File("/sdcard/Android/MTD_V2/");
                 if (!file.exists()) {
-                    if (file.mkdirs())
-                    {
+                    if (file.mkdirs()) {
 
                         txt_indication.setVisibility(View.VISIBLE);
                         txt_indication.setText("synchro_user");
@@ -289,9 +250,7 @@ public class AcceuilActivity extends AppCompatActivity {
                                 .playOn(findViewById(R.id.txt_indication));
 
 
-
-                    }else
-                    {
+                    } else {
 
                         txt_indication.setVisibility(View.VISIBLE);
                         txt_indication.setText("verif_permission");
@@ -302,10 +261,7 @@ public class AcceuilActivity extends AppCompatActivity {
                     }
 
 
-
-
-                }else
-                {
+                } else {
 
                     txt_indication.setVisibility(View.VISIBLE);
                     txt_indication.setText("verif_permission");
@@ -326,9 +282,75 @@ public class AcceuilActivity extends AppCompatActivity {
             }
 
 
-
             e.printStackTrace();
         }
+
+
+
+
+        int USER_ID = GET_SHARED_USER_ID(AcceuilActivity.this);
+        if (USER_ID != -1) {
+
+            USER_CONNECTED=db.USERSDao().getUsersUSER_ID(USER_ID);
+            if (USER_CONNECTED!=null)
+            {
+                txt_valider.setText("allons-y");
+            }else
+            {
+                txt_valider.setText("S'authentifier");
+
+            }
+
+        }
+
+        txt_insert_user.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                USERS users = new USERS();
+                users.setUSR_LOGIN("1");
+                users.setUSR_PWD("1");
+                users.setUSR_NOM_COMPLET("Ala Boukhari");
+                db.USERSDao().insertUSERS(users);
+                finish();
+            }
+        });
+
+        txt_delete_users.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                db.USERSDao().deleteAll();
+                finish();
+            }
+        });
+
+        txt_valider.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                if (Build.VERSION.SDK_INT >= 25) {
+                    checkPermissions();
+                } else {
+                    init();
+                }
+
+
+            }
+        });
+
+        txt_params.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(AcceuilActivity.this, ParametrageActivity.class));
+
+
+            }
+        });
+
+
+
+
     }
 
 

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tiers_item"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+     android:background="@color/background"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="170dp"
+        android:layout_height="100dp"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:id="@+id/lin_global"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="7dp"
+
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_empl"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:src="@drawable/emplacement_rouge"
+                />
+
+            <TextView
+                android:id="@+id/txt_emplacement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:maxHeight="90dp"
+                android:text="Emplacement"
+
+                />
+
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

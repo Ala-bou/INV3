@@ -41,6 +41,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.scsi.inventaire3.authentification.LoginActivity.invEntetes;
 import static com.scsi.inventaire3.splash.AcceuilActivity.USER_CONNECTED;
 
 /* loaded from: classes2.dex */
@@ -88,22 +89,38 @@ public class InventaireAdapter extends BaseAdapter {
             db = AppDatabase.getAppDatabase(this.activity);
 
             this.pDialog = new ProgressDialog(this.activity);
-            holder.rel.setOnLongClickListener(new View.OnLongClickListener() { // from class: com.scsi.inventairestock.load_inventaire.adapter.InventaireAdapter.1
+            holder.rel.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override // android.view.View.OnLongClickListener
                 public boolean onLongClick(View view) {
-                    INV_ENTETES inv_entetes = InventaireAdapter.db.INV_ENTETESDao().getINV_ENTETES();
+
+
+                    invEntetes=liste_inventaire.get(position);
+                    db.INV_ENTETESDao().insertINV_ENTETES(invEntetes);
+                    Intent i = new Intent( activity, MainActivity.class);
+                    activity.finish();
+                    activity.startActivity(i);
+                 /*       INV_ENTETES inv_entetes = InventaireAdapter.db.INV_ENTETESDao().getINV_ENTETES();
                     try {
-                        if (inv_entetes.getENT_ID() != ((INV_ENTETES) InventaireAdapter.this.liste_inventaire.get(position)).getENT_ID()) {
+
+                        if (inv_entetes==null)
+                        {
                             InventaireAdapter.entetesChoisen = (INV_ENTETES) InventaireAdapter.this.liste_inventaire.get(position);
                             InventaireAdapter.this.SYNC_EMPLACEMENT();
-                        } else {
-                            FBToast.warningToast(InventaireAdapter.this.activity, "Inventaire déja synchronisée", 0);
+                        }else
+                        {
+                            if (inv_entetes.getENT_ID() != (liste_inventaire.get(position)).getENT_ID()) {
+                                InventaireAdapter.entetesChoisen = (INV_ENTETES) InventaireAdapter.this.liste_inventaire.get(position);
+                                InventaireAdapter.this.SYNC_EMPLACEMENT();
+                            } else {
+                                FBToast.warningToast(InventaireAdapter.this.activity, "Inventaire déja synchronisée", 0);
+                            }
                         }
+
                     } catch (Exception e) {
                         InventaireAdapter.entetesChoisen = (INV_ENTETES) InventaireAdapter.this.liste_inventaire.get(position);
                         InventaireAdapter.this.SYNC_EMPLACEMENT();
                         e.printStackTrace();
-                    }
+                    }*/
                     return false;
                 }
             });

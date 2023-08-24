@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.scsi.inventaire3.MainActivity;
 import com.scsi.inventaire3.ParametrageActivity;
 import com.scsi.inventaire3.R;
+import com.scsi.inventaire3.bdd.entity.INV_ENTETES;
 import com.scsi.inventaire3.bdd.entity.USERS;
 import com.scsi.inventaire3.bdd.singleton.AppDatabase;
 import com.scsi.inventaire3.divers.Utils;
@@ -35,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.edit_password)
     EditText edit_password;
     AppDatabase db;
+    public static INV_ENTETES invEntetes = new INV_ENTETES();
 
 
     @Override
@@ -52,6 +54,22 @@ public class LoginActivity extends AppCompatActivity {
             USER_CONNECTED=db.USERSDao().getUsersUSER_ID(USER_ID);
             if (USER_CONNECTED!=null)
             {
+
+
+                invEntetes = db.INV_ENTETESDao().getINV_ENTETES();
+                if (LoginActivity.invEntetes == null) {
+                    Intent intent = new Intent(LoginActivity.this.getApplicationContext(), LoadInventaireActivity.class);
+                    LoginActivity.this.startActivity(intent);
+                } else {
+
+                    Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                    LoginActivity.this.startActivity(i);
+                }
+
+
+
+
+
                 startActivity(new Intent(this, LoadInventaireActivity.class));
                 finish();
             }else
@@ -85,6 +103,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (USER_CONNECTED != null) {
                         Utils.insert_shared_user(LoginActivity.this, USER_CONNECTED.getUSR_ID());
                         startActivity(new Intent(LoginActivity.this, LoginActivity.class));
+                        finish();
 
                     } else {
                         FBToast.errorToast(LoginActivity.this, "Authentification impossible", 0);
