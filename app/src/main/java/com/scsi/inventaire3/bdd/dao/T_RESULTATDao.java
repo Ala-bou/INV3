@@ -1,0 +1,85 @@
+package com.scsi.inventaire3.bdd.dao;
+
+
+import com.scsi.inventaire3.bdd.entity.T_RESULTAT;
+
+import java.util.List;
+
+import androidx.room.Dao;
+import androidx.room.Delete;
+import androidx.room.Insert;
+import androidx.room.Query;
+import androidx.room.Transaction;
+
+
+@Dao
+public interface T_RESULTATDao {
+    @Query("Delete  FROM T_RESULTAT ")
+    void deleteAll();
+
+    @Transaction
+    @Delete
+    void deletetRESULTAT_INVENTAIRE(T_RESULTAT resultat_inventaire);
+
+    @Query("SELECT * FROM T_RESULTAT")
+    List<T_RESULTAT> getAllRESULTAT();
+
+    @Query("SELECT * FROM T_RESULTAT where MBR_FLAG==1 and MISSION_ID=:MISSION_ID")
+    List<T_RESULTAT> getAllRESULTAT_BY_MISSION_ID(int MISSION_ID);
+
+    @Query("SELECT * FROM T_RESULTAT where MBR_FLAG==1 and ART_TYPESTOCK=:ART_TYPESTOCK and ART_TYPEGAMME=0")
+    List<T_RESULTAT> getAllRESULTAT_EXIST(int ART_TYPESTOCK);
+
+    @Query("SELECT * FROM T_RESULTAT where MBR_FLAG==1 and ART_TYPEGAMME=1")
+    List<T_RESULTAT> getAllRESULTAT_EXIST_GAMME();
+
+    @Query("SELECT * FROM T_RESULTAT ")
+    List<T_RESULTAT> getAllRESULTAT_INVENTAIRE();
+
+    @Query("SELECT * FROM T_RESULTAT WHERE MBR_FLAG==1")
+    List<T_RESULTAT> getAllRESULTAT_INVENTAIRE_EXIST();
+
+    @Query("SELECT * FROM T_RESULTAT WHERE MBR_FLAG==2")
+    List<T_RESULTAT> getAllRESULTAT_INVENTAIRE_INEXISTANT();
+
+    @Query("SELECT count(*) FROM T_RESULTAT where MISSION_ID=:MISSION_ID and MISSION_ID!=0")
+    int getCOUNT_BY_MISSION_ID(int MISSION_ID);
+
+
+    @Query("SELECT * FROM T_RESULTAT where ART_CODE=:ART_CODE and INV_ID=:INV_ID and EMP_CODE=:EMP_CODE and MBR_ZONE=:MBR_ZONE")
+    T_RESULTAT getRESULTAT_EXIST(String ART_CODE, int INV_ID, String EMP_CODE, String MBR_ZONE);
+
+    @Query("SELECT * FROM T_RESULTAT where ART_CODE=:ART_CODE and  EMP_CODE=:EMP_CODE and MBR_ZONE=:MBR_ZONE")
+    T_RESULTAT getRESULTAT_EXIST_CNUP(String ART_CODE, String EMP_CODE, String MBR_ZONE);
+
+
+
+    @Query("SELECT * FROM T_RESULTAT where ART_CODE=:ART_CODE and  EMP_CODE=:EMP_CODE and MBR_ZONE=:MBR_ZONE and MBR_LS_NO=:MBR_LS_NO")
+    T_RESULTAT getRESULTAT_EXIST_CNUP_LOT(String ART_CODE, String EMP_CODE, String MBR_ZONE, String MBR_LS_NO);
+
+
+    @Query("SELECT * FROM T_RESULTAT where ART_CODE=:ART_CODE   and MBR_ZONE=:MBR_ZONE and MBR_LS_NO=:MBR_LS_NO")
+    T_RESULTAT getRESULTAT_EXIST_LOT(String ART_CODE, String MBR_ZONE, String MBR_LS_NO);
+
+    @Query("SELECT * FROM T_RESULTAT where ART_CODE=:ART_CODE    and MBR_LS_NO=:MBR_LS_NO")
+    T_RESULTAT getRESULTAT_EXIST_LOT_MISSION(String ART_CODE, String MBR_LS_NO);
+
+    @Query("SELECT * FROM T_RESULTAT where ART_CODE=:ART_CODE and MBR_GAMME1=:MBR_GAMME1 and MBR_GAMME2=:MBR_GAMME2 and EMP_CODE=:EMP_CODE and MBR_ZONE=:MBR_ZONE")
+    T_RESULTAT getRESULTAT_EXIST_WITH_GAMME(String ART_CODE, String MBR_GAMME1, String MBR_GAMME2, String EMP_CODE, String MBR_ZONE);
+
+    @Query("SELECT * FROM T_RESULTAT where ART_CODE=:ART_CODE and MBR_GAMME1=:MBR_GAMME1 and MBR_GAMME2=:MBR_GAMME2 and EMP_CODE=:EMP_CODE and MBR_ZONE=:MBR_ZONE")
+    List<T_RESULTAT> getRESULTAT_EXIST_WITH_GAMME_LIST(String ART_CODE, String MBR_GAMME1, String MBR_GAMME2, String EMP_CODE, String MBR_ZONE);
+
+    @Query("SELECT * FROM T_RESULTAT where ART_CODE=:ART_CODE and MBR_GAMME1=:MBR_GAMME1 and MBR_GAMME2=:MBR_GAMME2 and EMP_CODE=:EMP_CODE and MBR_ZONE=:MBR_ZONE and MBR_LS_NO=:MBR_LS_NO")
+    T_RESULTAT getRESULTAT_EXIST_WITH_GAMME_LOT(String ART_CODE, String MBR_GAMME1, String MBR_GAMME2, String EMP_CODE, String MBR_ZONE, String MBR_LS_NO);
+
+    @Query("SELECT DISTINCT EMP_CODE FROM T_RESULTAT  ")
+    List<String> getlISTEMP_SCANNE();
+
+    @Query("SELECT DISTINCT MBR_ZONE FROM T_RESULTAT  ")
+    List<String> getlISTZONNE_SCANNE();
+
+    @Transaction
+    @Insert
+    long insertRESULTAT_INVENTAIRE(T_RESULTAT resultat_inventaire);
+}

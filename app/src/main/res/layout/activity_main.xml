@@ -106,6 +106,7 @@
 
 
                     <TextView
+                        android:id="@+id/txt_nom_inventaire"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/bold"
@@ -119,6 +120,7 @@
 
 
                     <TextView
+                        android:id="@+id/txt_code_inventaire"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -135,6 +137,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/txt_date_inventaire"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -150,6 +153,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/txt_comptage_inventaire"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"

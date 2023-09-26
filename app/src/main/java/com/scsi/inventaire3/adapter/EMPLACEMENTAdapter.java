@@ -2,18 +2,15 @@ package com.scsi.inventaire3.adapter;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.res.ColorStateList;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
 import com.scsi.inventaire3.R;
-import com.scsi.inventaire3.bdd.entity.EMPLACEMENT;
+import com.scsi.inventaire3.bdd.entity.T_EMPLACEMENT;
 import com.scsi.inventaire3.bdd.singleton.AppDatabase;
 
 import java.util.List;
@@ -22,10 +19,10 @@ import java.util.List;
 public class EMPLACEMENTAdapter extends BaseAdapter {
     static AppDatabase db;
     private Activity activity;
-    private List<EMPLACEMENT> liste_emplacement;
+    private List<T_EMPLACEMENT> liste_emplacement;
     LayoutInflater mInflater;
 
-    public EMPLACEMENTAdapter(Activity activity, List<EMPLACEMENT> list) {
+    public EMPLACEMENTAdapter(Activity activity, List<T_EMPLACEMENT> list) {
         this.activity = activity;
         this.liste_emplacement = list;
     }
@@ -56,16 +53,19 @@ public class EMPLACEMENTAdapter extends BaseAdapter {
             holder.txt_emplacement = (TextView) convertView2.findViewById(R.id.txt_emplacement);
             holder.img_empl =  convertView2.findViewById(R.id.img_empl);
               db = AppDatabase.getAppDatabase(this.activity);
-            if (position % 2 != 0) {
-                holder.img_empl.setImageDrawable(activity.getResources().getDrawable(R.drawable.emplacement_rouge));
-            }else
-            {
-                holder.img_empl.setImageDrawable(activity.getResources().getDrawable(R.drawable.emplacement_vert));
 
-            }
+            List<String> resultat_inventaires = db.T_RESULTATDao().getlISTEMP_SCANNE();
+            if (resultat_inventaires.contains(this.liste_emplacement.get(position).getEMPLACEMENT_CODE())) {
+                holder.img_empl.setImageDrawable(activity.getResources().getDrawable(R.drawable.emplacement_vert));
+             } else {
+                holder.img_empl.setImageDrawable(activity.getResources().getDrawable(R.drawable.emplacement_rouge));
+             }
+
+
+
 
             TextView textView = holder.txt_emplacement;
-            textView.setText(this.liste_emplacement.get(position).getEMP_CODE() + "");
+            textView.setText(this.liste_emplacement.get(position).getEMPLACEMENT_CODE() + "");
             convertView2.setTag(holder);
         } else {
             ViewHolder viewHolder = (ViewHolder) convertView2.getTag();

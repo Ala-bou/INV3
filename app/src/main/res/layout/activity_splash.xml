@@ -108,7 +108,7 @@
             android:fontFamily="@font/arial_bold"
             android:gravity="center"
             android:layout_marginTop="3dp"
-            android:text="MobileTeam"
+            android:text="Inventaire"
             android:textColor="@color/themeRed"
             android:textSize="15dp" />
 

@@ -20,18 +20,21 @@ import com.android.volley.Response;
 import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.scsi.inventaire3.bdd.entity.USERS;
+import com.scsi.inventaire3.bdd.entity.P_USER;
 import com.scsi.inventaire3.bdd.singleton.AppDatabase;
 import com.scsi.inventaire3.divers.AppController;
+import com.scsi.inventaire3.divers.Constant;
 import com.scsi.inventaire3.divers.Utils;
 import com.tfb.fbtoast.FBToast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import static com.scsi.inventaire3.divers.Constant.TYPE_SCAN_BARCODE_QR;
+import static com.scsi.inventaire3.divers.Constant.TYPE_SCAN_GS1;
+import static com.scsi.inventaire3.divers.Utils.GET_INT;
 import static com.scsi.inventaire3.divers.Utils.GET_SHARED_TYPE_SCAN;
-import static com.scsi.inventaire3.divers.Utils.TYPE_SCAN_BARCODE_QR;
-import static com.scsi.inventaire3.divers.Utils.TYPE_SCAN_GS1;
+import static com.scsi.inventaire3.divers.Utils.GET_STRING;
 
 public class ParametrageActivity extends AppCompatActivity {
     @BindView(R.id.img_back)
@@ -205,21 +208,16 @@ public class ParametrageActivity extends AppCompatActivity {
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         JSONObject obj = response.getJSONObject(i);
-                        USERS users = new USERS();
-                        users.setUSR_ID(obj.getInt("USR_ID"));
-                        users.setUSR_ACTIF(obj.getInt("USR_ACTIF"));
-                        try {
-                            users.setCOL_ID(obj.getInt("COL_ID"));
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        users.setCOL_CODE(obj.getString("COL_CODE"));
-                        users.setUSR_NOM_COMPLET(obj.getString("USR_NOM_COMPLET"));
-                        users.setUSR_LOGIN(obj.getString("USR_LOGIN"));
-                        users.setUSR_PWD(obj.getString("USR_PWD"));
-                        users.setUSR_TEL(obj.getString("USR_TEL"));
-                        users.setUSR_MAIL(obj.getString("USR_MAIL"));
-                        users.setUSR_TOKEN(obj.getString("USR_MAIL"));
+                        P_USER users = new P_USER();
+                        users.setUSER_ID(obj.getInt("USER_ID"));
+                        users.setUSER_NAME(GET_STRING(obj.getString("USER_NAME")));
+                        users.setUSER_TYPE_ID(GET_INT(obj.getString("USER_TYPE_ID")));
+                        users.setUSER_ETAT(GET_INT(obj.getString("USER_ETAT")));
+                        users.setUSER_TOKEN(GET_STRING(obj.getString("USER_TOKEN")));
+                        users.setUSER_LOGIN(GET_STRING(obj.getString("USER_LOGIN")));
+                        users.setUSER_PASSWORD(GET_STRING(obj.getString("USER_PASSWORD")));
+
+
                     db.USERSDao().insertUSERS(users);
                     } catch (Exception e2) {
                         e2.printStackTrace();

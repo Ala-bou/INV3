@@ -19,9 +19,8 @@ import com.daimajia.androidanimations.library.YoYo;
 import com.scsi.inventaire3.ParametrageActivity;
 import com.scsi.inventaire3.R;
 import com.scsi.inventaire3.authentification.LoginActivity;
-import com.scsi.inventaire3.bdd.entity.USERS;
+import com.scsi.inventaire3.bdd.entity.P_USER;
 import com.scsi.inventaire3.bdd.singleton.AppDatabase;
-import com.scsi.inventaire3.inventaire.LoadInventaireActivity;
 
 import java.io.File;
 
@@ -43,7 +42,7 @@ public class AcceuilActivity extends AppCompatActivity {
 
     AppDatabase db;
 
-    public static USERS USER_CONNECTED;
+    public static P_USER USER_CONNECTED;
 
 
     @Override
@@ -306,10 +305,10 @@ public class AcceuilActivity extends AppCompatActivity {
         txt_insert_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                USERS users = new USERS();
-                users.setUSR_LOGIN("1");
-                users.setUSR_PWD("1");
-                users.setUSR_NOM_COMPLET("Ala Boukhari");
+                P_USER users = new P_USER();
+                users.setUSER_LOGIN("1");
+                users.setUSER_PASSWORD("1");
+                users.setUSER_NAME("Ala Boukhari");
                 db.USERSDao().insertUSERS(users);
                 finish();
             }

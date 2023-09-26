@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -20,8 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.scsi.inventaire3.R;
-import com.scsi.inventaire3.authentification.LoginActivity;
-import com.scsi.inventaire3.bdd.entity.INV_ENTETES;
+import com.scsi.inventaire3.bdd.entity.T_INVENTAIRE;
 import com.scsi.inventaire3.divers.AppController;
 import com.scsi.inventaire3.divers.Utils;
 import com.scsi.inventaire3.inventaire.adapter.InventaireAdapter;
@@ -36,7 +34,7 @@ import java.util.List;
 import static com.scsi.inventaire3.splash.AcceuilActivity.USER_CONNECTED;
 
 public class LoadInventaireActivity extends AppCompatActivity {
-    List<INV_ENTETES> ENTETE_LIST = new ArrayList();
+    List<T_INVENTAIRE> ENTETE_LIST = new ArrayList();
     @BindView(R.id.shimmer)
     ShimmerFrameLayout Shimmer;
     @BindView(R.id.img_back)
@@ -71,7 +69,7 @@ public class LoadInventaireActivity extends AppCompatActivity {
         });
 
 
-        INV_ENTETES invEntetes = new INV_ENTETES();
+        T_INVENTAIRE invEntetes = new T_INVENTAIRE();
         invEntetes.setENT_ID(1);
         invEntetes.setENT_COMPTAGE(1);
         invEntetes.setDEP_ID(1);
@@ -82,14 +80,12 @@ public class LoadInventaireActivity extends AppCompatActivity {
         invEntetes.setENT_NOTE_CLOTURE("ENT_NOTE_CLOTURE");
         invEntetes.setENT_DATECREATE("ENT_DATECREATE");
         invEntetes.setENT_USERCREATE("ENT_USERCREATE");
+        invEntetes.setENT_DATE("12/12/2023");
 
         invEntetes.setENT_DOS("ENT_DOS");
         ENTETE_LIST.add(invEntetes);
         ENTETE_LIST.add(invEntetes);
-        ENTETE_LIST.add(invEntetes);
-        ENTETE_LIST.add(invEntetes);
-        ENTETE_LIST.add(invEntetes);
-        ENTETE_LIST.add(invEntetes);
+
 
 
         showLIST();
@@ -130,7 +126,7 @@ public class LoadInventaireActivity extends AppCompatActivity {
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         JSONObject obj = response.getJSONObject(i);
-                        INV_ENTETES invEntetes = new INV_ENTETES();
+                        T_INVENTAIRE invEntetes = new T_INVENTAIRE();
                         invEntetes.setENT_ID(obj.getInt("ENT_ID"));
                         invEntetes.setENT_COMPTAGE(obj.getInt("ENT_COMPTAGE"));
                         invEntetes.setDEP_ID(obj.getInt("DEP_ID"));

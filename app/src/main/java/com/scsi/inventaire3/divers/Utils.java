@@ -16,8 +16,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 public class Utils {
-    public static int TYPE_SCAN_GS1 = 0;
-    public static int TYPE_SCAN_BARCODE_QR = 1;
+
+
+
     public static boolean checkAndRequestPermissions(Activity activity) {
 
         List<String> listPermissionsNeeded = new ArrayList<>();
@@ -149,11 +150,12 @@ public class Utils {
     }
 
     public static void DELETE_ALL(AppDatabase db) {
-        db.INV_ENTETESDao().deleteAll();
-        db.ARTICLESDao().deleteAll();
-        db.EMPLACEMENTDao().deleteAll();
+        db.T_INVENTAIREDao().deleteAll();
+        db.T_ARTICLEDao().deleteAll();
+        db.T_EMPLACEMENTDao().deleteAll();
         db.ZONESDao().deleteAll();
-        db.RESULTAT_INVENTAIREDao().deleteAll();
+        db.T_RESULTATDao().deleteAll();
+        db.T_STOCK_DETAILDao().deleteAll();
     }
 
     public static String data_from_json(String date) {

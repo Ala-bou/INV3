@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f1f1f1">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:background="@color/background"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5sp">
+
+            <ImageView
+                android:id="@+id/img_back"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:paddingTop="5sp"
+                android:src="@drawable/back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/arial_bold"
+                android:text="Résultats d&apos;inventaire"
+                android:textColor="@color/white"
+                android:textSize="22dp" />
+        </RelativeLayout>
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/lin_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp">
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp">
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp">
+
+                            <LinearLayout
+                                android:id="@+id/lin_quantite"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="7dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/rounded_corner"
+                                android:backgroundTint="@color/themeBlue"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:fontFamily="@font/regular"
+                                    android:gravity="center"
+                                    android:text="Quantité"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/white"
+                                    android:textSize="13sp" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginBottom="8dp"
+                                    android:layout_marginTop="20dp"
+                                    android:gravity="center"
+                                    android:text="-"
+                                    android:textColor="#ffffff"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/lin_gamme"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="7dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/rounded_corner"
+                                android:backgroundTint="@color/themePurple"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:fontFamily="@font/regular"
+                                    android:gravity="center"
+                                    android:text="GAMME"
+                                    android:textColor="@color/white"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/txt_date_inv"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="8dp"
+                                    android:layout_marginTop="20dp"
+                                    android:gravity="center"
+                                    android:text="-"
+                                    android:textColor="@color/white"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/lin_lot"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="7dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/rounded_corner"
+                                android:backgroundTint="@color/themeOrange"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:fontFamily="@font/regular"
+                                    android:gravity="center"
+                                    android:text="LOT"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/white"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginBottom="8dp"
+                                    android:layout_marginTop="20dp"
+                                    android:gravity="center"
+                                    android:text="-"
+                                    android:textColor="#ffffff"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/lin_serie"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="7dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/rounded_corner"
+                                android:backgroundTint="@color/themeGreen"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:fontFamily="@font/regular"
+                                    android:gravity="center"
+                                    android:text="Serie"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/white"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/txt_comptage"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginBottom="8dp"
+                                    android:layout_marginTop="20dp"
+                                    android:gravity="center"
+                                    android:text="-"
+                                    android:textColor="#ffffff"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </TableRow>
+                    </TableLayout>
+                </LinearLayout>
+
+                <ListView
+                    android:id="@+id/list_result"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/rel_title" />
+
+                <RelativeLayout
+                    android:id="@+id/rel_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_below="@+id/lin_top">
+
+                    <TextView
+                        android:id="@+id/txt_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/regular"
+                        android:gravity="center_vertical"
+                        android:text="Les articles scannée "
+                        android:textColor="@color/white"
+                        android:textSize="20dp" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+
+    </LinearLayout>
+</RelativeLayout>

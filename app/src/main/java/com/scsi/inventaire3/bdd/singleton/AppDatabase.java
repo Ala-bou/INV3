@@ -2,58 +2,51 @@ package com.scsi.inventaire3.bdd.singleton;
 
 import android.content.Context;
 
-import com.scsi.inventaire3.bdd.dao.ARTICLESDao;
-import com.scsi.inventaire3.bdd.dao.EMPLACEMENTDao;
-import com.scsi.inventaire3.bdd.dao.HST_SCANDao;
-import com.scsi.inventaire3.bdd.dao.INV_ENTETESDao;
-import com.scsi.inventaire3.bdd.dao.MISSIONDao;
-import com.scsi.inventaire3.bdd.dao.RESULTAT_INVENTAIREDao;
-import com.scsi.inventaire3.bdd.dao.STK_GAMMEDao;
-import com.scsi.inventaire3.bdd.dao.STK_GLOBALDao;
-import com.scsi.inventaire3.bdd.dao.STK_LOT_SERIEDao;
-import com.scsi.inventaire3.bdd.dao.USERSDao;
-import com.scsi.inventaire3.bdd.dao.ZONESDao;
-import com.scsi.inventaire3.bdd.entity.ARTICLES;
-import com.scsi.inventaire3.bdd.entity.EMPLACEMENT;
-import com.scsi.inventaire3.bdd.entity.HST_SCAN;
-import com.scsi.inventaire3.bdd.entity.INV_ENTETES;
-import com.scsi.inventaire3.bdd.entity.MISSION;
-import com.scsi.inventaire3.bdd.entity.RESULTAT_INVENTAIRE;
-import com.scsi.inventaire3.bdd.entity.STK_GAMME;
-import com.scsi.inventaire3.bdd.entity.STK_GLOBAL;
-import com.scsi.inventaire3.bdd.entity.STK_LOT_SERIE;
-import com.scsi.inventaire3.bdd.entity.USERS;
-import com.scsi.inventaire3.bdd.entity.ZONES;
+import com.scsi.inventaire3.bdd.dao.P_USERDao;
+import com.scsi.inventaire3.bdd.dao.T_ARTICLEDao;
+import com.scsi.inventaire3.bdd.dao.T_EMPLACEMENTDao;
+import com.scsi.inventaire3.bdd.dao.T_HISTORIQUE_INVENTAIREDao;
+import com.scsi.inventaire3.bdd.dao.T_INVENTAIREDao;
+import com.scsi.inventaire3.bdd.dao.T_RESULTATDao;
+import com.scsi.inventaire3.bdd.dao.T_STOCK_DETAILDao;
+import com.scsi.inventaire3.bdd.dao.T_ZONEDao;
+import com.scsi.inventaire3.bdd.entity.T_ARTICLE;
+import com.scsi.inventaire3.bdd.entity.T_EMPLACEMENT;
+import com.scsi.inventaire3.bdd.entity.T_HISTORIQUE_INVENTAIRE;
+import com.scsi.inventaire3.bdd.entity.T_INVENTAIRE;
+import com.scsi.inventaire3.bdd.entity.P_USER;
+import com.scsi.inventaire3.bdd.entity.T_RESULTAT;
+import com.scsi.inventaire3.bdd.entity.T_STOCK_DETAIL;
+import com.scsi.inventaire3.bdd.entity.T_ZONE;
 
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {HST_SCAN.class, ARTICLES.class, EMPLACEMENT.class, INV_ENTETES.class, MISSION.class, RESULTAT_INVENTAIRE.class, STK_GAMME.class, STK_GLOBAL.class, STK_LOT_SERIE.class, USERS.class, ZONES.class}, version = 1)
+@Database(entities = {T_HISTORIQUE_INVENTAIRE.class, T_ARTICLE.class, T_EMPLACEMENT.class, T_INVENTAIRE.class,   T_RESULTAT.class, T_STOCK_DETAIL.class,  P_USER.class, T_ZONE.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase INSTANCE;
 
-    public abstract ARTICLESDao ARTICLESDao();
+    public abstract P_USERDao P_USERDao();
 
-    public abstract EMPLACEMENTDao EMPLACEMENTDao();
+    public abstract T_ARTICLEDao T_ARTICLEDao();
 
-    public abstract HST_SCANDao HST_SCANDao();
+    public abstract T_EMPLACEMENTDao T_EMPLACEMENTDao();
 
-    public abstract INV_ENTETESDao INV_ENTETESDao();
+    public abstract T_HISTORIQUE_INVENTAIREDao T_HISTORIQUE_INVENTAIREDao();
 
-    public abstract MISSIONDao MISSIONDao();
+    public abstract T_INVENTAIREDao T_INVENTAIREDao();
 
-    public abstract RESULTAT_INVENTAIREDao RESULTAT_INVENTAIREDao();
+    public abstract T_RESULTATDao T_RESULTATDao();
 
-    public abstract STK_GAMMEDao STK_GAMMEDao();
+    public abstract T_STOCK_DETAILDao T_STOCK_DETAILDao();
 
-    public abstract STK_GLOBALDao STK_GLOBALDao();
+    public abstract T_ZONEDao T_ZONEDao();
 
-    public abstract STK_LOT_SERIEDao STK_LOT_SERIEDao();
 
-    public abstract USERSDao USERSDao();
+    public abstract P_USERDao USERSDao();
 
-    public abstract ZONESDao ZONESDao();
+    public abstract T_ZONEDao ZONESDao();
 
     public static AppDatabase getAppDatabase(Context context) {
         if (INSTANCE == null) {
@@ -62,7 +55,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
                     .build();
         }
-         return INSTANCE;
+        return INSTANCE;
     }
 
     public static void destroyInstance() {

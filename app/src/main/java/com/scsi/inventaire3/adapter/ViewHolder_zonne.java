@@ -11,4 +11,5 @@ class ViewHolder_zonne {
 
     public TextView txt_zonne;
     public ImageView img_zonne;
+    public RelativeLayout rel;
 }

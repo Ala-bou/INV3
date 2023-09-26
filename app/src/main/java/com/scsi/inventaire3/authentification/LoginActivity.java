@@ -13,14 +13,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.scsi.inventaire3.MainActivity;
-import com.scsi.inventaire3.ParametrageActivity;
 import com.scsi.inventaire3.R;
-import com.scsi.inventaire3.bdd.entity.INV_ENTETES;
-import com.scsi.inventaire3.bdd.entity.USERS;
+import com.scsi.inventaire3.bdd.entity.T_INVENTAIRE;
 import com.scsi.inventaire3.bdd.singleton.AppDatabase;
 import com.scsi.inventaire3.divers.Utils;
 import com.scsi.inventaire3.inventaire.LoadInventaireActivity;
-import com.scsi.inventaire3.splash.AcceuilActivity;
 import com.tfb.fbtoast.FBToast;
 
 import static com.scsi.inventaire3.divers.Utils.GET_SHARED_USER_ID;
@@ -36,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.edit_password)
     EditText edit_password;
     AppDatabase db;
-    public static INV_ENTETES invEntetes = new INV_ENTETES();
+    public static T_INVENTAIRE invEntetes = new T_INVENTAIRE();
 
 
     @Override
@@ -56,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
             {
 
 
-                invEntetes = db.INV_ENTETESDao().getINV_ENTETES();
+                invEntetes = db.T_INVENTAIREDao().getINV_ENTETES();
                 if (LoginActivity.invEntetes == null) {
                     Intent intent = new Intent(LoginActivity.this.getApplicationContext(), LoadInventaireActivity.class);
                     LoginActivity.this.startActivity(intent);
@@ -101,7 +98,7 @@ public class LoginActivity extends AppCompatActivity {
                 {
                     USER_CONNECTED = db.USERSDao().getUserByLoginPWD(edit_user_name.getText().toString(),edit_password.getText().toString());
                     if (USER_CONNECTED != null) {
-                        Utils.insert_shared_user(LoginActivity.this, USER_CONNECTED.getUSR_ID());
+                        Utils.insert_shared_user(LoginActivity.this, USER_CONNECTED.getUSER_ID());
                         startActivity(new Intent(LoginActivity.this, LoginActivity.class));
                         finish();
 
